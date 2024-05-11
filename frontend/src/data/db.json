@@ -1,0 +1,62 @@
+ {
+ "products": 
+    [
+    {
+        "id": "1",
+        "name" : "Zelda Dress",
+        "description":"A Beaded Pointelle Dress in a Lovely Blush Pink",
+        "price": 999,
+        "color": "Pointelle Pink",
+        "qty": 1,
+        "size" : ["xs","s","m","l","xl"],
+        "sku": "",
+        "selectedSize": "",
+        "totalPrice": 999,
+        "primaryImage" :"../src/assets/images/product/zelda.webp",
+        "otherImages": ["../src/assets/images/product/zelda-1.webp","../src/assets/images/product/zelda-2.jpg","../src/assets/images/product/zelda-3.jpg"]
+    },
+    {
+        "id": "2",
+        "name" : "Elisa Cardigan",
+        "description": "A Luxe Cropped Cardigan featuring Brushed Gold Buttons",
+        "price": 9999,
+        "color": "Venice Scroll Blue",
+        "qty": 1,
+        "size" : ["xs","s","m","l","xl"],
+        "sku": "",
+        "selectedSize": "",
+        "totalPrice": 9999,
+        "primaryImage" :"../src/assets/images/product/elisa.webp",
+        "otherImages": ["../src/assets/images/product/elisa-1.webp","../src/assets/images/product/elisa-2.webp"]
+    },
+    {
+        "id": "3",
+        "name" : "Claudine Top",
+        "description": "The Perfect Match To The Josephine Pant Or Back To Denim",
+        "price": 4999,
+        "color": "Vernal Plaid",
+        "qty": 1,
+        "size" : ["xs","s","m","l","xl"],
+        "sku": "",
+        "selectedSize": "",
+        "totalPrice": 4999,
+        "primaryImage" :"../src/assets/images/product/claudineTop.webp",
+        "otherImages": ["../src/assets/images/product/claudineTop-1.webp","../src/assets/images/product/claudineTop-2.webp","../src/assets/images/product/claudineTop-3.webp"]
+    }
+],
+
+"shipping":
+ [
+    {
+        "id" : "731224",
+        "rate": 100
+    },
+    {
+        "id" : "144001",
+        "rate": 200 
+    }
+
+]
+
+}
+
