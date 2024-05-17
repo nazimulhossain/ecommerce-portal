@@ -2,10 +2,13 @@ package com.jnntechnologies.clothingstore.service.impl;
 
 import com.jnntechnologies.clothingstore.dto.CategoryDto;
 import com.jnntechnologies.clothingstore.dto.ProductDto;
+import com.jnntechnologies.clothingstore.dto.ProductsDto;
 import com.jnntechnologies.clothingstore.entity.Category;
 import com.jnntechnologies.clothingstore.entity.Product;
+import com.jnntechnologies.clothingstore.entity.Size;
 import com.jnntechnologies.clothingstore.mapper.CategoryMapper;
 import com.jnntechnologies.clothingstore.mapper.ProductMapper;
+import com.jnntechnologies.clothingstore.mapper.SizeMapper;
 import com.jnntechnologies.clothingstore.repository.CategoryRepository;
 import com.jnntechnologies.clothingstore.repository.ProductRepository;
 import com.jnntechnologies.clothingstore.service.ICategoryService;
@@ -26,27 +29,24 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public void createCategory(CategoryDto categoryDto) {
         Category category = CategoryMapper.maptoCategory(categoryDto, new Category());
+        categoryRepository.save(category);
+
+    }
+
+    @Override
+    public void addProductsToCategory(ProductsDto productList, int categoryId) {
+        Optional<Category> category = categoryRepository.findById(categoryId);
         List<Product> products = new ArrayList<>();
-        List<Product> productsFromDatabase = productRepository.findAll();
-        if(categoryDto.getProductDto()!=null){
-            for(ProductDto productDto : categoryDto.getProductDto()){
-                products.add(ProductMapper.mapToProduct(productDto,new Product()));
+        if(category.isPresent()){
+            for (int i=0;i<productList.getProductDtos().size();i++){
+                Optional<Product> product = productRepository.findById(productList.getProductDtos().get(i).getProductId());
+                products.add(product.get());
             }
+            category.get().setProducts(products);
+            categoryRepository.save(category.get());
+
+
         }
-
-        for(int i=0;i<products.size();i++){
-
-            for(int j=0;j<productsFromDatabase.size();j++){
-                if(Objects.equals(products.get(i).getName(), productsFromDatabase.get(j).getName())){
-                    category.addProducts(productsFromDatabase.get(j));
-                }
-
-            }
-        }
-
-      categoryRepository.save(category);
-
-
 
     }
 
@@ -54,7 +54,6 @@ public class CategoryServiceImpl implements ICategoryService {
     public CategoryDto getCategoryByName(String categoryName) {
         Optional<Category> category = categoryRepository.findByCategoryName(categoryName);
         if(category.isPresent()){
-//            return category.get();
             CategoryDto categoryDto= CategoryMapper.mapToCategoryDto(category.get(),new CategoryDto());
             return categoryDto;
 

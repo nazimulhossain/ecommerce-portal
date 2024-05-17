@@ -8,7 +8,7 @@ import java.util.List;
 public class SizeMapper {
     public static SizeDto mapToSizeDto(Size size, SizeDto sizeDto){
         sizeDto.setSizeId(size.getSizeId());
-        sizeDto.setSizeName(sizeDto.getSizeName());
+        sizeDto.setSizeName(size.getSizeName());
         return sizeDto;
     }
 

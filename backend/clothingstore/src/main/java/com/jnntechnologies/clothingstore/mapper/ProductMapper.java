@@ -20,11 +20,6 @@ public class ProductMapper {
         productDto.setPrimaryImage(product.getPrimaryImage());
         productDto.setSelectedSize(product.getSelectedSize());
         productDto.setTotalPrice(product.getTotalPrice());
-        List<SizeDto> sizes = new ArrayList<>();
-        for(Size size : product.getSize()){
-            sizes.add(SizeMapper.mapToSizeDto(size,new SizeDto()));
-        }
-        productDto.setSizeName(sizes);
         return productDto;
     }
 
@@ -37,11 +32,11 @@ public class ProductMapper {
         product.setPrimaryImage(productDto.getPrimaryImage());
         product.setSelectedSize(productDto.getSelectedSize());
         product.setTotalPrice(productDto.getTotalPrice());
-        List<Size> sizes = new ArrayList<>();
-        for(SizeDto sizeDto : productDto.getSizeName()){
-            sizes.add(SizeMapper.mapToSize(sizeDto,new Size()));
-        }
-        product.setSize(sizes);
+//        List<Size> sizes = new ArrayList<>();
+//        for(SizeDto sizeDto : productDto.getSizeName()){
+//            sizes.add(SizeMapper.mapToSize(sizeDto,new Size()));
+//        }
+//        product.setSize(sizes);
         return product;
 
     }

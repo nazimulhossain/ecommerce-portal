@@ -10,7 +10,7 @@ import java.util.List;
 public interface IProductService {
     boolean createProduct(ProductDto productDto);
 
-    ProductDto getProductByName(String productName);
+    ProductDto getProductById(int productId);
 
-    void removeAll();
+    void removeAllProducts();
 }

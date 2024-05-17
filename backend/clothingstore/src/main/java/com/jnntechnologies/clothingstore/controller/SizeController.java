@@ -2,6 +2,7 @@ package com.jnntechnologies.clothingstore.controller;
 
 import com.jnntechnologies.clothingstore.dto.ResponseDto;
 import com.jnntechnologies.clothingstore.dto.SizeDto;
+import com.jnntechnologies.clothingstore.dto.SizesDto;
 import com.jnntechnologies.clothingstore.entity.Size;
 import com.jnntechnologies.clothingstore.repository.SizeRepository;
 import com.jnntechnologies.clothingstore.service.ISizeService;
@@ -32,12 +33,12 @@ public class SizeController {
 
     }
 
-//    @PostMapping("/createAll")
-//    public ResponseEntity<ResponseDto> CreateSizes(@RequestBody SizeDtos sizeDtos){
-//        iSizeService.createAllSize(sizeDtos);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(201,"Sizes created successfully"));
-//
-//    }
+    @PostMapping("/createAll")
+    public ResponseEntity<ResponseDto> CreateSizes(@RequestBody SizesDto sizesDto){
+        iSizeService.createAllSize(sizesDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(201,"Sizes created successfully"));
+
+    }
 
     @GetMapping("/")
     public List<Size> getAllSize(){

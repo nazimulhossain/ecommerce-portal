@@ -19,6 +19,7 @@ public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sizeId;
+    @Column(name = "name")
     private String sizeName;
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE,

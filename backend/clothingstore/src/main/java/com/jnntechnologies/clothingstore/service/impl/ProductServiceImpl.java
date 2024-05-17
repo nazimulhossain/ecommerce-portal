@@ -55,10 +55,18 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductDto getProductByName(String name) {
-        Optional<Product> product = productRepository.findByName(name);
+    public ProductDto getProductById(int productId) {
+        Optional<Product> product = productRepository.findById(productId);
         if(product.isPresent()){
             ProductDto productDto = ProductMapper.mapToProductDto(product.get(),new ProductDto());
+            List<SizeDto> sizeDtos = new ArrayList<>();
+            for(int i=0;i<product.get().getSize().size();i++){
+                SizeDto sizeDto = SizeMapper.mapToSizeDto(product.get().getSize().get(i),new SizeDto() );
+                sizeDtos.add(sizeDto);
+
+            }
+
+            productDto.setSizeName(sizeDtos);
             return productDto;
 
         }
@@ -69,7 +77,7 @@ public class ProductServiceImpl implements IProductService {
 
 
     @Override
-    public void removeAll() {
+    public void removeAllProducts() {
         productRepository.deleteAll();
     }
 }

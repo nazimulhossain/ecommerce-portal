@@ -1,8 +1,5 @@
 package com.jnntechnologies.clothingstore.controller;
 
-
-import com.jnntechnologies.clothingstore.dao.impl.ProductDao;
-import com.jnntechnologies.clothingstore.dao.impl.ProductDaoImpl;
 import com.jnntechnologies.clothingstore.dto.ProductDto;
 import com.jnntechnologies.clothingstore.dto.ResponseDto;
 import com.jnntechnologies.clothingstore.dto.SizeDto;
@@ -25,9 +22,9 @@ public class ProductController {
 
     private final IProductService iProductService;
     private final ProductRepository productRepository;
-    private final ProductDao productDao;
 
-    @PostMapping("/")
+
+    @PostMapping("/create")
     public ResponseEntity<ResponseDto> createProduct(@RequestBody ProductDto productDto){
         boolean isCreated = iProductService.createProduct(productDto);
         if(isCreated){
@@ -38,9 +35,9 @@ public class ProductController {
 
     }
 
-    @GetMapping("/{productName}")
-    public ResponseEntity<ProductDto> getProductByName(@PathVariable String productName){
-        ProductDto product = iProductService.getProductByName(productName);
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductDto> getProductByid(@PathVariable String productId){
+        ProductDto product = iProductService.getProductById(Integer.parseInt(productId));
         if(product != null ){
             return ResponseEntity.status(HttpStatus.OK)
                     .body(product);
@@ -50,15 +47,6 @@ public class ProductController {
 
     }
 
-    @GetMapping("/id/{productId}")
-    public Product getProductById(@PathVariable String productId){
-//        int id = Integer.valueOf(productId);
-        return productDao.findProductById(productId);
-
-//        int id = Integer.valueOf(productId);
-//        return productRepository.findById(id).get();
-    }
-
 
     @DeleteMapping("/delete")
     public void deleteAllProduct(){
@@ -66,8 +54,8 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("/{productName}")
-    public void deleteByProductName(@PathVariable String productName){
-        productRepository.deleteByName(productName);
+    @DeleteMapping("/{productId}")
+    public void deleteByProductName(@PathVariable String productId){
+        productRepository.deleteById(Integer.parseInt(productId));
     }
 }

@@ -1,6 +1,7 @@
 package com.jnntechnologies.clothingstore.service.impl;
 
 import com.jnntechnologies.clothingstore.dto.SizeDto;
+import com.jnntechnologies.clothingstore.dto.SizesDto;
 import com.jnntechnologies.clothingstore.entity.Size;
 import com.jnntechnologies.clothingstore.mapper.SizeMapper;
 import com.jnntechnologies.clothingstore.repository.ProductRepository;
@@ -29,22 +30,29 @@ public class SizeServiceImpl implements ISizeService {
 
     }
 
-//    @Override
-//    public void createAllSize(SizeDtos sizeDtos) {
-//        List<Size> sizes = new ArrayList<>();
-//
-//        for(String sizeName : sizeDtos.getSizeName()){
-//            sizes.add(new Size(sizeName));
-//        }
-//
-//        sizeRepository.saveAll(sizes);
-//
-//
-//    }
+    @Override
+    public void createAllSize(SizesDto sizesDto) {
+        List<Size> sizes = new ArrayList<>();
+        for(int i=0;i<sizesDto.getSizeDtos().size();i++){
+            Size size = SizeMapper.mapToSize(sizesDto.getSizeDtos().get(i),new Size() );
+            sizes.add(size);
+        }
+
+
+
+        sizeRepository.saveAll(sizes);
+
+
+    }
 
     @Override
     public List<Size> getAllSizes() {
         return sizeRepository.findAll();
 
+    }
+
+    @Override
+    public void deleteAllSize() {
+        sizeRepository.deleteAll();
     }
 }
