@@ -18,7 +18,7 @@ function CartItem({product,iconSize}){
         </div>
         <div className="flex gap-2 items-center border border-black px-1">
             <span onClick={()=> dispatch(decreaseQuantity(product))}><AiOutlineMinus size={iconSize} /></span>
-            <p className="text-xl">{product.qty}</p>
+            <p className="text-xl">{product.quantity}</p>
             <span onClick={()=> dispatch(increaseQuantity(product))}><AiOutlinePlus size={iconSize}/></span>
         </div>
         </div>

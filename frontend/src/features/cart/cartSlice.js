@@ -16,8 +16,8 @@ const cartSlice = createSlice({
         addItem(state,action){
             const item = state.cart.find((product) => product.sku === action.payload.sku);
             if(item){
-                item.qty++;
-                item.totalPrice = item.price * item.qty;
+                item.quantity++;
+                item.totalPrice = item.price * item.quantity;
             }
             else {
                 state.cart.push(action.payload)
@@ -33,15 +33,15 @@ const cartSlice = createSlice({
         },
         increaseQuantity(state,action){
             const item = state.cart.find((item)=> item.sku===action.payload.sku);
-            item.qty++;
-            item.totalPrice = item.price * item.qty;
+            item.quantity++;
+            item.totalPrice = item.price * item.quantity;
         },
         decreaseQuantity(state,action){
             const item = state.cart.find((item)=> item.sku===action.payload.sku);
-            item.qty--;
-            item.totalPrice = item.price * item.qty;
+            item.quantity--;
+            item.totalPrice = item.price * item.quantity;
 
-            if(item.qty===0) cartSlice.caseReducers.deleteItem(state,action);
+            if(item.quantity===0) cartSlice.caseReducers.deleteItem(state,action);
 
         },
     }

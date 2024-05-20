@@ -3,16 +3,16 @@ import { useProducts } from "./useProducts";
 
 function Products({size}){
 
-    const {products,isLoading} = useProducts();
+    const {products,isPending} = useProducts(4);
 
     return (
         <>
 
-        {isLoading ? <h2>Loading....</h2> 
+        {isPending ? <h2>Loading....</h2> 
         
         : 
         
-        size===1 ? <ProductList product={products[0]} /> :products?.map((product)=> <ProductList product={product} key={product.id} />)
+        size===1 ? <ProductList product={products[0]} /> :products?.map((product)=> <ProductList product={product} key={product.productId} />)
         
         }
 
