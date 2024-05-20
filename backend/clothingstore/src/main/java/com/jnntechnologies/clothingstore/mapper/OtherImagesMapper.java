@@ -5,6 +5,7 @@ import com.jnntechnologies.clothingstore.entity.OtherImages;
 
 public class OtherImagesMapper {
     public static OtherImagesDto mapToOtherImagesDto(OtherImages otherImages,OtherImagesDto otherImagesDto){
+        otherImagesDto.setOtherimagesId(otherImages.getOtherimagesId());
         otherImagesDto.setName(otherImages.getName());
         return otherImagesDto;
     }

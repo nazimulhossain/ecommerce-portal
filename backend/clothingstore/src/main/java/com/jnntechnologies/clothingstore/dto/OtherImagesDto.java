@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class OtherImagesDto {
+    private int otherimagesId;
     private String name;
 }

@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/api/product",produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(path = "/api/products",produces = {MediaType.APPLICATION_JSON_VALUE})
 public class ProductController {
 
     private final IProductService iProductService;
@@ -35,7 +35,7 @@ public class ProductController {
 
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/id/{productId}")
     public ResponseEntity<ProductDto> getProductByid(@PathVariable String productId){
         ProductDto product = iProductService.getProductById(Integer.parseInt(productId));
         if(product != null ){
@@ -47,15 +47,21 @@ public class ProductController {
 
     }
 
+    @PutMapping("/id/{id}")
+    void updateProduct(@PathVariable String id,@RequestBody ProductDto productDto){
+        iProductService.updateProduct(Integer.parseInt(id),productDto);
 
-    @DeleteMapping("/delete")
+    }
+
+
+    @DeleteMapping("/")
     public void deleteAllProduct(){
         productRepository.deleteAll();
 
     }
 
-    @DeleteMapping("/{productId}")
-    public void deleteByProductName(@PathVariable String productId){
-        productRepository.deleteById(Integer.parseInt(productId));
+    @DeleteMapping("/id/{productId}")
+    public void deleteProduct(@PathVariable String productId){
+        iProductService.deleteProductById(Integer.parseInt(productId));
     }
 }

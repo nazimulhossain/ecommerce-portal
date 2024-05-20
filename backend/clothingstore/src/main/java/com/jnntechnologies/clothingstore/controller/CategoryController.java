@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/category",produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(path = "/api/categories",produces = {MediaType.APPLICATION_JSON_VALUE})
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
 public class CategoryController {
@@ -30,15 +30,25 @@ public class CategoryController {
 
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/product/{id}")
     public void addProductsToCategory(@RequestBody ProductsDto productDtos, @PathVariable String id){
-        System.out.println(productDtos);
         iCategoryService.addProductsToCategory(productDtos,Integer.parseInt(id));
 
     }
 
-    @GetMapping("/{categoryName}")
-    public CategoryDto getCategoryByName(@PathVariable String categoryName){
-        return iCategoryService.getCategoryByName(categoryName);
+    @GetMapping("/id/{id}")
+    public CategoryDto getCategoryById(@PathVariable String id){
+        return iCategoryService.getCategoryById(Integer.parseInt(id));
+    }
+
+    @DeleteMapping("/id/{id}")
+    public void deleteCategory(@PathVariable String id){
+        iCategoryService.deleteCategory(Integer.parseInt(id));
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable String id){
+        List<ProductDto> productDtos = iCategoryService.getProductsByCategory(Integer.parseInt(id));
+        return ResponseEntity.status(HttpStatus.OK).body(productDtos);
     }
 }

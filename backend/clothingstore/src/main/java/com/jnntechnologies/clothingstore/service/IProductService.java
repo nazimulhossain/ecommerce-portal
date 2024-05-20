@@ -12,5 +12,9 @@ public interface IProductService {
 
     ProductDto getProductById(int productId);
 
+    void updateProduct(int id,ProductDto productDto);
+
     void removeAllProducts();
+
+    void deleteProductById(int id);
 }

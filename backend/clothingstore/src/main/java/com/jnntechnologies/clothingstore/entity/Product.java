@@ -51,8 +51,6 @@ public class Product {
     )
     @JsonBackReference(value = "category-product")
     private List<Category> categories;
-    private String selectedSize;
-    private double totalPrice;
 
 
     public void addCategories(Category category){

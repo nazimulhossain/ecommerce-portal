@@ -73,11 +73,28 @@ public class ProductServiceImpl implements IProductService {
         return null;
     }
 
+    @Override
+    public void updateProduct(int id, ProductDto productDto) {
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isPresent()){
+            Product updatedProduct = ProductMapper.mapToProduct(productDto,product.get());
+            productRepository.save(updatedProduct);
 
+        }
+
+    }
 
 
     @Override
     public void removeAllProducts() {
         productRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteProductById(int id) {
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isPresent()){
+            productRepository.delete(product.get());
+        }
     }
 }
