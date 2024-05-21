@@ -13,7 +13,6 @@ public class ProductDto {
     private double price;
     private String color;
     private int quantity;
-//    private double totalPrice;
     private String primaryImage;
     private List<SizeDto> sizeName;
     private List<OtherImagesDto> otherImagesDtos;

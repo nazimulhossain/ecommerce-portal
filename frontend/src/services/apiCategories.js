@@ -23,3 +23,13 @@ export async function getProducts(categoryId){
 
     return response.data;
 }
+
+export async function getProductsByCategoryName(categoryName){
+
+    const response = await axios({
+        method:'get',
+        url:`${BASE_URL}/category/name/${categoryName}`
+    })
+
+    return response.data;
+}

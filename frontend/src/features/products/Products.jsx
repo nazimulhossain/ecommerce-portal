@@ -12,7 +12,7 @@ function Products({size}){
         
         : 
         
-        size===1 ? <ProductList product={products[0]} /> :products?.map((product)=> <ProductList product={product} key={product.productId} />)
+        size===1 ? <ProductList product={products[0]} /> :products?.slice(0,3).map((product)=> <ProductList product={product} key={product.productId} />)
         
         }
 

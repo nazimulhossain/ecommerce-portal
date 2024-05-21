@@ -37,13 +37,11 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public void addProductsToCategory(ProductsDto productList, int categoryId) {
         Optional<Category> category = categoryRepository.findById(categoryId);
-        List<Product> products = new ArrayList<>();
         if(category.isPresent()){
             for (int i=0;i<productList.getProductDtos().size();i++){
                 Optional<Product> product = productRepository.findById(productList.getProductDtos().get(i).getProductId());
-                products.add(product.get());
+                category.get().getProducts().add(product.get());
             }
-            category.get().setProducts(products);
             categoryRepository.save(category.get());
 
 
@@ -74,6 +72,27 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public List<ProductDto> getProductsByCategory(int id) {
         Optional<Category> category = categoryRepository.findById(id);
+        if(category.isPresent()){
+            List<Product> products = category.get().getProducts();
+            List<ProductDto> productDtos = new ArrayList<>();
+            for (int i=0;i<products.size();i++){
+                ProductDto productDto = ProductMapper.mapToProductDto(products.get(i),new ProductDto());
+                List<SizeDto> sizeDtos = new ArrayList<>();
+                for (int j=0;j<products.get(i).getSize().size();j++){
+                    SizeDto sizeDto = SizeMapper.mapToSizeDto(products.get(i).getSize().get(j),new SizeDto() );
+                    sizeDtos.add(sizeDto);
+                }
+                productDto.setSizeName(sizeDtos);
+                productDtos.add(productDto);
+            }
+            return productDtos;
+        }
+        return null;
+    }
+
+    @Override
+    public List<ProductDto> getProductsByCategory(String categoryName) {
+        Optional<Category> category = categoryRepository.findByCategoryName(categoryName);
         if(category.isPresent()){
             List<Product> products = category.get().getProducts();
             List<ProductDto> productDtos = new ArrayList<>();

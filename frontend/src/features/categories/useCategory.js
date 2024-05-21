@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCategory } from "../../services/apiCategories";
+import { getProductsByCategoryName } from "../../services/apiCategories";
 
 
 export const useCategory = (categoryName)=>{
 
    const {data: category,isLoading} = useQuery({
         queryKey: ['category'],
-        queryFn: ()=> getCategory(categoryName)
+        queryFn: ()=> getProductsByCategoryName(categoryName)
     })
 
     return {category,isLoading}

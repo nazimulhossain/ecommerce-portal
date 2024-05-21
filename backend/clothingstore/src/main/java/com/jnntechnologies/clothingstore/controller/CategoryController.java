@@ -51,4 +51,9 @@ public class CategoryController {
         List<ProductDto> productDtos = iCategoryService.getProductsByCategory(Integer.parseInt(id));
         return ResponseEntity.status(HttpStatus.OK).body(productDtos);
     }
+    @GetMapping("/category/name/{categoryName}")
+    public ResponseEntity<List<ProductDto>> getProductsByCategoryByName(@PathVariable String categoryName){
+        List<ProductDto> productDtos = iCategoryService.getProductsByCategory(categoryName);
+        return ResponseEntity.status(HttpStatus.OK).body(productDtos);
+    }
 }

@@ -18,4 +18,5 @@ public interface ICategoryService {
     void deleteCategory(int id);
 
     List<ProductDto> getProductsByCategory(int id);
+    List<ProductDto> getProductsByCategory(String categoryName);
 }
