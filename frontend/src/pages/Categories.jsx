@@ -13,7 +13,7 @@ function Categories(){
     return(
         <div>
             <h2 className="text-sm px-12 mb-4 font-semibold">{name.join(" ").toUpperCase()}&nbsp;&nbsp;({category?.length})</h2>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="flex flex-col gap-4 lg:grid lg:grid-cols-3 lg:gap-2">
 
             {
                 category?.map((product)=> {

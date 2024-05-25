@@ -8,7 +8,7 @@ function CartItem({product,iconSize}){
 
     return (
         <div className="p-2 bg-white flex justify-between mb-6 ">
-        <div className="flex">
+        <div className="flex gap-2">
         <img src={product.primaryImage} className="w-24" />
         <div className="flex flex-col justify-between items-center">
         <div>

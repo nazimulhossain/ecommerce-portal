@@ -31,15 +31,18 @@ function Checkout(){
     }
 
     return (
-        <div className="h-full  bg-[#fbf8f1] grid grid-cols-[0.55fr_0.45fr]">
-            <div className="p-16 pt-6 border-r border-r-[#e2dfd9 ]">
-            <h2 className="text-6xl mb-5 tracking-widest hover:cursor-pointer"onClick={navigateToHome}>Aainagirl</h2>
+        <div className="h-full  bg-[#fbf8f1] p-2 lg:p-16 lg:pt-6">
+        <h2 className="text-3xl mb-2 lg:text-6xl lg:mb-5 tracking-widest hover:cursor-pointer"onClick={navigateToHome}>Aainagirl</h2>
             <CheckoutBreadcrumb step={step} />
+        
+        <div className="flex flex-col lg:grid lg:grid-cols-[0.55fr_0.45fr]">
+            <div className=" border-r border-r-[#e2dfd9 ] order-1 lg:order-none">
+            
            {step === 'contact_information' && <CheckoutInformation setShippingRate={setShippingRate} />} 
            {step === 'shipping_method' && <CheckoutShipping />}
            {step === 'payment_method' && <CheckoutPayment />}
             </div>
-            <div className="p-16">
+            <div className="p-0 lg:p-16 ">
                 <div className="border-b border-[#c2c2c2] mb-6">
                 <CheckoutCartDetails />
                 </div>
@@ -49,6 +52,7 @@ function Checkout(){
 
             </div>
             
+        </div>
         </div>
     )
 

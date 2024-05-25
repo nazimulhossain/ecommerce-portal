@@ -4,9 +4,9 @@ import Products from "../products/Products";
 function NewArrivals(){
     
     return (
-        <div className="py-10">
+        <div className="pb-10 pt-[9rem] lg:pt-0">
            <Section tag="From the Collection" heading='New Arrivals' />
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-1">
               <Products />
           
             </div>
