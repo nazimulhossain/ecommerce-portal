@@ -69,7 +69,7 @@ function Footer(){
                     <a href="#">Terms & Conditions</a>
                 </li>
             </ul>
-            <div className="text-xs flex justify-center">
+            <div className="text-xs flex justify-center lg:justify-end">
                 <CurrencySelector />
             </div>
 

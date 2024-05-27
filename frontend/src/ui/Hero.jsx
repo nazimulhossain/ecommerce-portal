@@ -25,7 +25,7 @@ function Hero(){
     return(
         <div className='mb-40 lg:mb-10'>
         <div className='grid grid-cols-1 lg:grid-cols-2'>
-        {/* <div style={heroStyle2}></div> */}
+      
         
             <div className='relative border border-gray-300 order-1 lg:order-none'>
                <div className=' bg-[#fbf8f1] border border-gray-300 shadow-lg shadow-transparent w-4/5 absolute top-1/2 left-1/2 right-1/2 translate-y-[7%] -translate-x-1/2 lg:-translate-y-1/2 '>
@@ -41,8 +41,7 @@ function Hero(){
               </div>
                 
                 </div>
-
-                <img src={hero} />
+                <div style={heroStyle2}></div>
             
 
             
