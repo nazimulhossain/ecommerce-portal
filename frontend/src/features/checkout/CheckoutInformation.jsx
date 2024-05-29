@@ -54,8 +54,8 @@ function CheckoutInformation({setShippingRate}){
             })} 
 
             onSubmit={async(values)=> {
-                const rates = await getShippingRate(values.pinCode);
-                setShippingRate(rates.rate);
+                const {rates} = await getShippingRate(values.pinCode);
+                setShippingRate(rates);
                 setValue(values);
                 navigate("/checkout?step=shipping_method");
                 
